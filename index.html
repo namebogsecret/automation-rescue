@@ -3,114 +3,294 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vladimir Podlevskikh — Automation Rescue & AI Workflows | Python · n8n · Make</title>
-<meta name="description" content="I fix broken Zapier/Make/n8n automations in 48–72h and build custom scraping, AI/LLM workflows and integrations. White-label for agencies. Wholesale pricing.">
+<title>Automation Rescue — Broken Zapier/Make/n8n Fixed in 48–72h | Vladimir Podlevskikh</title>
+<meta name="description" content="Senior Python engineer. I fix broken Zapier, Make and n8n automations in 48–72 hours, and build custom scraping, AI/LLM workflows and integrations. White-label delivery for agencies at wholesale rates.">
+<meta property="og:title" content="Automation Rescue — broken workflows fixed in 48–72h">
+<meta property="og:description" content="Rescue for dead Zapier/Make/n8n automations · custom scraping · AI/LLM workflows · white-label for agencies. Free diagnosis within 24h.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://automation.podlevskikh.com/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🚑%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Podlevskikh Automation",
+"description":"Automation rescue and custom workflow engineering: Zapier/Make/n8n fixes, web scraping, AI/LLM integrations.",
+"founder":{"@type":"Person","name":"Vladimir Podlevskikh"},
+"email":"jobs@podlevskikh.com",
+"address":{"@type":"PostalAddress","streetAddress":"21 Avet Avetisyan St., apt. 19","addressLocality":"Yerevan","postalCode":"0033","addressCountry":"AM"},
+"areaServed":["US","EU","UK"],"priceRange":"$250-$3500"}
+</script>
 <style>
-  :root{--bg:#0d1117;--card:#161b22;--line:#21262d;--txt:#e6edf3;--mut:#8b949e;--acc:#3fb950;--acc2:#58a6ff;}
+  :root{
+    --bg:#0a0e14;--bg2:#0f1520;--card:#131a26;--line:#1f2937;
+    --txt:#eef2f7;--mut:#94a3b8;--dim:#64748b;
+    --acc:#22c55e;--acc-d:#16a34a;--blue:#60a5fa;--amber:#fbbf24;
+    --r:14px;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--txt);font:16px/1.6 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-  .wrap{max-width:880px;margin:0 auto;padding:0 20px}
-  header{padding:64px 0 40px;text-align:center}
-  h1{font-size:2.2rem;line-height:1.2;margin-bottom:14px}
-  h1 em{color:var(--acc);font-style:normal}
-  .sub{color:var(--mut);font-size:1.12rem;max-width:640px;margin:0 auto 26px}
-  .cta{display:inline-block;background:var(--acc);color:#04260f;font-weight:700;padding:13px 26px;border-radius:8px;text-decoration:none;font-size:1.05rem}
-  .cta:hover{filter:brightness(1.1)}
-  .ghost{display:inline-block;color:var(--acc2);padding:13px 18px;text-decoration:none}
-  section{padding:34px 0;border-top:1px solid var(--line)}
-  h2{font-size:1.45rem;margin-bottom:18px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
-  .card h3{font-size:1.02rem;margin-bottom:6px;color:var(--acc2)}
-  .card p{color:var(--mut);font-size:.95rem}
-  .badge{display:inline-block;background:#1f6feb22;color:var(--acc2);border:1px solid #1f6feb55;border-radius:20px;padding:2px 12px;font-size:.85rem;margin:3px 4px 3px 0}
-  .steps li{margin:10px 0 10px 24px}
-  .price{font-size:1.05rem}.price strong{color:var(--acc)}
-  form{display:grid;gap:12px;max-width:560px}
-  input,textarea,select{background:var(--card);border:1px solid var(--line);border-radius:8px;color:var(--txt);padding:12px;font:inherit;width:100%}
-  textarea{min-height:120px}
-  button{background:var(--acc);border:0;border-radius:8px;color:#04260f;font-weight:700;padding:14px;font-size:1.05rem;cursor:pointer}
-  button:hover{filter:brightness(1.1)}
-  .note{color:var(--mut);font-size:.85rem}
-  footer{padding:36px 0 48px;color:var(--mut);font-size:.85rem;border-top:1px solid var(--line)}
-  a{color:var(--acc2)}
-  .ok{display:none;background:#1f6feb22;border:1px solid #1f6feb55;border-radius:10px;padding:18px;max-width:560px}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--txt);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+  a{color:var(--blue);text-decoration:none}
+  ::selection{background:#22c55e44}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:10;background:#0a0e14cc;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .logo{font-weight:800;color:var(--txt);font-size:1.02rem;letter-spacing:.2px}
+  .logo span{color:var(--acc)}
+  .nav-links{display:flex;gap:22px;align-items:center;font-size:.93rem}
+  .nav-links a{color:var(--mut)}
+  .nav-links a:hover{color:var(--txt)}
+  .btn{display:inline-block;background:var(--acc);color:#03190b;font-weight:700;padding:10px 20px;border-radius:10px;transition:.15s}
+  .btn:hover{background:var(--acc-d);transform:translateY(-1px)}
+  .btn.big{padding:15px 30px;font-size:1.06rem;border-radius:12px}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--txt);font-weight:600}
+  .btn.ghost:hover{border-color:var(--dim);background:var(--card)}
+
+  /* hero */
+  .hero{padding:84px 0 64px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:-40% -20% auto;height:520px;
+    background:radial-gradient(600px 280px at 70% 20%,#22c55e14,transparent 60%),
+               radial-gradient(500px 260px at 25% 10%,#60a5fa12,transparent 60%);pointer-events:none}
+  .kicker{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--mut);
+    font-size:.82rem;padding:6px 14px;border-radius:30px;margin-bottom:22px}
+  .kicker b{color:var(--acc);font-weight:700}
+  h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.12;letter-spacing:-.5px;font-weight:800;max-width:780px}
+  h1 em{font-style:normal;color:var(--acc)}
+  .sub{color:var(--mut);font-size:1.16rem;max-width:640px;margin:20px 0 30px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:42px;color:var(--dim);font-size:.88rem}
+  .trust b{color:var(--mut);font-weight:600}
+
+  /* sections */
+  section{padding:72px 0}
+  section.alt{background:var(--bg2);border-block:1px solid var(--line)}
+  .sec-kicker{color:var(--acc);font-weight:700;font-size:.84rem;text-transform:uppercase;letter-spacing:1.6px;margin-bottom:10px}
+  h2{font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.3px;line-height:1.2;margin-bottom:14px}
+  .lead{color:var(--mut);max-width:680px;margin-bottom:36px}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;transition:.15s}
+  .card:hover{border-color:#2c3a4f;transform:translateY(-2px)}
+  .ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+       background:#22c55e14;margin-bottom:14px;font-size:1.25rem}
+  .card h3{font-size:1.04rem;margin-bottom:8px}
+  .card p{color:var(--mut);font-size:.94rem}
+  .card .tag{display:inline-block;margin-top:12px;font-size:.8rem;color:var(--acc)}
+
+  /* agencies band */
+  .band{background:linear-gradient(135deg,#13241a,#10202e);border:1px solid #1d3a2a;border-radius:18px;padding:38px 36px;
+        display:grid;grid-template-columns:1.6fr 1fr;gap:30px;align-items:center}
+  .band h2{margin-bottom:10px}
+  .band p{color:var(--mut)}
+  .price-chip{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:22px;text-align:center}
+  .price-chip .n{font-size:1.7rem;font-weight:800;color:var(--acc)}
+  .price-chip .d{color:var(--dim);font-size:.86rem;margin-top:4px}
+
+  /* process */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;counter-reset:s}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:20px;width:30px;height:30px;
+    background:var(--acc);color:#03190b;font-weight:800;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+  .step h3{font-size:1rem;margin:8px 0 8px}
+  .step p{color:var(--mut);font-size:.93rem}
+
+  /* pricing */
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:.95rem}
+  th{background:var(--bg2);color:var(--mut);font-weight:600;font-size:.85rem;text-transform:uppercase;letter-spacing:.8px}
+  td b{color:var(--acc)}
+  tr:last-child td{border-bottom:0}
+  td:first-child{font-weight:600}
+  .note{color:var(--dim);font-size:.85rem;margin-top:12px}
+
+  /* proof */
+  .repos{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-top:8px}
+  .repo{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .repo .gi{font-size:1.1rem;margin-top:2px}
+  .repo b{display:block;font-size:.95rem;color:var(--blue)}
+  .repo span{color:var(--dim);font-size:.86rem}
+
+  /* faq */
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  summary::after{content:"+";color:var(--acc);font-size:1.3rem;font-weight:400}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--mut);margin-top:12px;font-size:.95rem}
+
+  /* form */
+  .form-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:36px;max-width:620px}
+  form{display:grid;gap:14px}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  label{font-size:.85rem;color:var(--mut);font-weight:600;display:block;margin-bottom:6px}
+  input,textarea,select{background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--txt);padding:13px 14px;font:inherit;width:100%;transition:.15s}
+  input:focus,textarea:focus,select:focus{outline:none;border-color:var(--acc)}
+  textarea{min-height:130px;resize:vertical}
+  button{background:var(--acc);border:0;border-radius:11px;color:#03190b;font-weight:800;padding:16px;font-size:1.05rem;cursor:pointer;transition:.15s}
+  button:hover{background:var(--acc-d)}
+  button:disabled{opacity:.6;cursor:wait}
+  .ok{display:none;background:#22c55e14;border:1px solid #22c55e44;border-radius:14px;padding:24px;max-width:620px;font-size:1.02rem}
+
+  footer{border-top:1px solid var(--line);padding:40px 0 52px;color:var(--dim);font-size:.86rem}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+  @media(max-width:760px){
+    .band{grid-template-columns:1fr}
+    .row2{grid-template-columns:1fr}
+    .nav-links a:not(.btn){display:none}
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header>
-  <h1>Broken automation? <em>Fixed in 48–72h.</em><br>Need one built? Done right.</h1>
-  <p class="sub">Python engineer for the work no-code teams get stuck on: rescuing dead Zapier/Make/n8n workflows, custom scraping, AI/LLM steps, ugly API integrations. Solo, senior, async — no agency overhead.</p>
-  <a class="cta" href="#quote">Get a free diagnosis →</a>
-  <a class="ghost" href="https://github.com/namebogsecret" rel="noopener">GitHub: 130+ projects</a>
-</header>
-
-<section>
-  <h2>What I take off your plate</h2>
-  <div class="grid">
-    <div class="card"><h3>🚑 Workflow rescue</h3><p>Broken Zaps/scenarios, integrations killed by API changes (Twilio/A2P, Google, Meta), projects a previous freelancer abandoned. Diagnosis first — then a fixed-price fix.</p></div>
-    <div class="card"><h3>🕸 Scraping & monitoring</h3><p>Playwright collectors where no API exists: competitor prices, listings, reviews, alerts. Delivered as maintainable n8n/Make nodes or standalone scripts.</p></div>
-    <div class="card"><h3>🧠 AI / LLM steps</h3><p>OpenAI & Claude wired into real workflows: lead qualification, document parsing, RAG over your knowledge base, classification. Production-grade, not demo-grade.</p></div>
-    <div class="card"><h3>🔌 Integrations & migrations</h3><p>Odd CRMs, legacy systems, webhooks, data pipelines. Zapier → n8n/Make when the bill explodes — mapped, tested, documented.</p></div>
+<nav><div class="wrap nav-in">
+  <div class="logo">Podlevskikh <span>Automation</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a><a href="#agencies">For agencies</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    <a class="btn" href="#quote">Free diagnosis</a>
   </div>
-</section>
+</div></nav>
 
-<section>
-  <h2>For agencies: white-label overflow</h2>
-  <p>You sold the automation — I deliver it under your brand. NDA standard, zero attribution, you keep the client and the margin. <span class="price">Wholesale: <strong>$500–1,500/project</strong> for scopes agencies retail at $3,000+.</span></p>
-  <p style="margin-top:8px" class="note">First small fix free if you want to test how I work.</p>
-</section>
+<header class="hero"><div class="wrap">
+  <div class="kicker">● <b>Available now</b> &nbsp;·&nbsp; replies within 24h, UTC+4</div>
+  <h1>Broken automation?<br><em>Fixed in 48–72 hours.</em></h1>
+  <p class="sub">Senior Python engineer for the work no-code teams get stuck on: rescuing dead Zapier / Make / n8n workflows, custom scraping, AI&nbsp;steps, ugly API integrations. Solo and direct — no agency overhead, no project-manager telephone game.</p>
+  <div class="hero-cta">
+    <a class="btn big" href="#quote">Get a free diagnosis →</a>
+    <a class="btn ghost" href="https://github.com/namebogsecret" rel="noopener" target="_blank">GitHub · 130+ projects</a>
+  </div>
+  <div class="trust">
+    <div><b>130+</b> Python projects shipped</div>
+    <div><b>MSc Physics</b> — Lomonosov MSU</div>
+    <div><b>48–72h</b> typical rescue turnaround</div>
+    <div><b>NDA</b> &amp; white-label friendly</div>
+  </div>
+</div></header>
 
-<section>
-  <h2>Proof</h2>
-  <span class="badge">130+ Python projects — github.com/namebogsecret</span>
-  <span class="badge">MSc Physics, Lomonosov Moscow State University</span>
-  <span class="badge">Python · Playwright · n8n · Make · OpenAI/Claude APIs</span>
-  <span class="badge">Yerevan, UTC+4 — full EU overlap, US mornings</span>
-  <span class="badge">Clean handoff: docs, tests, runbook</span>
-</section>
+<section id="services"><div class="wrap">
+  <div class="sec-kicker">Services</div>
+  <h2>What I take off your plate</h2>
+  <p class="lead">If it has an interface, it can be automated. If it broke at 2am, it can be fixed.</p>
+  <div class="grid">
+    <div class="card"><div class="ico">🚑</div><h3>Workflow rescue</h3>
+      <p>Dead Zaps and scenarios, integrations killed by API changes (Twilio/A2P, Google, Meta), projects a previous freelancer abandoned mid-way.</p>
+      <span class="tag">Diagnosis first → fixed-price fix</span></div>
+    <div class="card"><div class="ico">🕸</div><h3>Scraping &amp; monitoring</h3>
+      <p>Playwright collectors where no API exists: competitor prices, listings, reviews, compliance watches — with alerting that actually wakes you up.</p>
+      <span class="tag">Delivered as maintainable n8n/Make nodes</span></div>
+    <div class="card"><div class="ico">🧠</div><h3>AI &amp; LLM workflows</h3>
+      <p>OpenAI &amp; Claude wired into production: lead qualification, document parsing, RAG over your knowledge base, classification at scale.</p>
+      <span class="tag">Production-grade, not demo-grade</span></div>
+    <div class="card"><div class="ico">🔌</div><h3>Integrations &amp; migrations</h3>
+      <p>Odd CRMs, legacy systems, webhooks, data pipelines. Zapier&nbsp;→&nbsp;n8n/Make migrations when the monthly bill explodes.</p>
+      <span class="tag">Mapped · tested · documented</span></div>
+  </div>
+</div></section>
 
-<section>
-  <h2>How it works</h2>
-  <ol class="steps">
-    <li><strong>Send the broken thing</strong> (or the scope) via the form below.</li>
-    <li><strong>Within 24h</strong> you get a diagnosis, a fixed quote and an ETA. No call required.</li>
-    <li><strong>I build/fix under NDA</strong>, you get documented, tested work. Pay on delivery — Payoneer or bank transfer (USD/EUR).</li>
-  </ol>
-</section>
+<section class="alt" id="agencies"><div class="wrap">
+  <div class="band">
+    <div>
+      <div class="sec-kicker">For agencies</div>
+      <h2>White-label overflow capacity</h2>
+      <p>You sold the automation — I deliver it under your brand. NDA standard, zero attribution, you keep the client and the margin. Your team gets documented, maintainable work plus a runbook.</p>
+      <p style="margin-top:10px"><b style="color:var(--amber)">First small fix free</b> — send the ugliest broken workflow you have and see how I work.</p>
+    </div>
+    <div class="price-chip">
+      <div class="n">$500–1,500</div>
+      <div class="d">per project, wholesale —<br>for scopes agencies retail at $3,000+</div>
+    </div>
+  </div>
+</div></section>
 
-<section id="quote">
+<section><div class="wrap">
+  <div class="sec-kicker">Process</div>
+  <h2>From “it's broken” to “it runs” — without a single call</h2>
+  <p class="lead">Async-first. Calls optional, never required.</p>
+  <div class="steps">
+    <div class="step"><h3>Send the broken thing</h3><p>Form below, 2 minutes. Screenshots, exports, error logs, a Loom — whatever you have.</p></div>
+    <div class="step"><h3>Free diagnosis in 24h</h3><p>What died, why, and a fixed quote with an ETA. No “discovery phase”, no upsell theatre.</p></div>
+    <div class="step"><h3>Fixed &amp; documented</h3><p>Work delivered under NDA with docs, tests and a runbook. Pay on delivery — Payoneer or bank transfer (USD/EUR).</p></div>
+  </div>
+</div></section>
+
+<section class="alt" id="pricing"><div class="wrap">
+  <div class="sec-kicker">Pricing</div>
+  <h2>Honest ranges, fixed quotes</h2>
+  <p class="lead">Every job gets a fixed price before work starts. These are the typical ranges:</p>
+  <table>
+    <tr><th>Engagement</th><th>Typical price</th><th>Turnaround</th></tr>
+    <tr><td>🚑 Rescue / fix a broken workflow</td><td><b>$250–800</b> fixed</td><td>48–72h</td></tr>
+    <tr><td>🔧 New automation / integration build</td><td><b>$500–2,000</b> fixed</td><td>3–10 days</td></tr>
+    <tr><td>🕸 Scraping or monitoring pipeline</td><td><b>$500–1,500</b> fixed</td><td>3–7 days</td></tr>
+    <tr><td>🧠 AI/LLM workflow</td><td><b>$800–3,500</b> fixed</td><td>1–3 weeks</td></tr>
+    <tr><td>🏢 Agency white-label (wholesale)</td><td><b>$500–1,500</b>/project</td><td>per scope</td></tr>
+    <tr><td>♻️ Maintenance retainer</td><td><b>from $300</b>/month</td><td>ongoing</td></tr>
+  </table>
+  <p class="note">Compare: US agencies charge $3,000–10,000 for a single workflow plus $500–1,500/mo retainers for the same scope.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="sec-kicker">Proof</div>
+  <h2>Code you can actually look at</h2>
+  <p class="lead">130+ Python projects on <a href="https://github.com/namebogsecret" target="_blank" rel="noopener">github.com/namebogsecret</a>. A few public samples:</p>
+  <div class="repos">
+    <a class="repo" href="https://github.com/namebogsecret/telegram-task-bot" target="_blank" rel="noopener"><span class="gi">🤖</span><div><b>telegram-task-bot</b><span>Async Telegram to-do bot — aiogram 3, inline buttons, SQLite</span></div></a>
+    <a class="repo" href="https://github.com/namebogsecret/web-scraper-toolkit" target="_blank" rel="noopener"><span class="gi">🕸</span><div><b>web-scraper-toolkit</b><span>Polite paginated scraper → clean CSV/JSON, unit-tested</span></div></a>
+    <a class="repo" href="https://github.com/namebogsecret/ai-text-summarizer" target="_blank" rel="noopener"><span class="gi">🧠</span><div><b>ai-text-summarizer</b><span>FastAPI summarization API — OpenAI/Anthropic + offline fallback</span></div></a>
+    <a class="repo" href="https://github.com/namebogsecret/csv-cleaner" target="_blank" rel="noopener"><span class="gi">🧹</span><div><b>csv-cleaner</b><span>One-command CSV cleaner — snake_case, dedupe, type inference</span></div></a>
+    <a class="repo" href="https://github.com/namebogsecret/fastapi-url-shortener" target="_blank" rel="noopener"><span class="gi">🔗</span><div><b>fastapi-url-shortener</b><span>REST URL shortener — FastAPI + SQLite, base62, stats</span></div></a>
+  </div>
+</div></section>
+
+<section class="alt" id="faq"><div class="wrap">
+  <div class="sec-kicker">FAQ</div>
+  <h2>Fair questions</h2>
+  <details><summary>Why are you cheaper than an agency?</summary><p>No office, no sales team, no project managers — you pay for engineering only. I'm based in Yerevan (UTC+4) with full EU overlap and US-morning availability, which keeps my costs low and my response times fast.</p></details>
+  <details><summary>How do I know you won't disappear like the last freelancer?</summary><p>Three things: you pay on delivery (not upfront), every job ships with documentation and a runbook your team can use without me, and my GitHub history — 130+ projects over years — is public. Disappearing acts don't leave that kind of paper trail.</p></details>
+  <details><summary>Do you work with our existing tools?</summary><p>Yes. n8n, Make, Zapier, plus raw Python where connectors don't exist. I deliver inside your stack so your team can maintain it — or I stay on a retainer and maintain it for you.</p></details>
+  <details><summary>What about NDAs and client confidentiality?</summary><p>NDA is standard for white-label work — your client never learns I exist. For direct clients: your data stays in your systems; I work through accesses you control and you revoke them when we're done.</p></details>
+  <details><summary>What can't you do?</summary><p>I don't take projects requiring HIPAA-regulated patient-data processing, on-site presence, or 24/7 phone support. If your project needs a 10-person team, I'll tell you in the diagnosis instead of pretending.</p></details>
+  <details><summary>How do payments work?</summary><p>Fixed quote → delivery → payment via Payoneer or bank transfer (USD/EUR). Retainers are billed monthly. No deposits for first-time fixes under $800.</p></details>
+</div></section>
+
+<section id="quote"><div class="wrap">
+  <div class="sec-kicker">Start here</div>
   <h2>Send me the ugliest broken workflow you have</h2>
-  <form id="leadform" action="https://formsubmit.co/ajax/jobs@podlevskikh.com" method="POST">
-    <input type="hidden" name="_subject" value="🔥 LEAD: automation request from landing">
-    <input type="hidden" name="_template" value="table">
-    <input type="text" name="_honey" style="display:none">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Work email" required>
-    <select name="type">
-      <option value="rescue">🚑 Fix a broken automation</option>
-      <option value="build">🔧 Build a new automation</option>
-      <option value="scraping">🕸 Scraping / monitoring</option>
-      <option value="ai">🧠 AI / LLM workflow</option>
-      <option value="whitelabel">🏢 Agency — white-label partnership</option>
-      <option value="other">Other</option>
-    </select>
-    <textarea name="message" placeholder="What's broken / what do you need? Links welcome." required></textarea>
-    <button type="submit">Get free diagnosis within 24h</button>
-    <p class="note">No newsletter, no spam — your message lands directly in my inbox.</p>
-  </form>
-  <div class="ok" id="ok">✅ <strong>Got it.</strong> Diagnosis lands in your inbox within 24 hours. — Vladimir</div>
-  <p class="note" style="margin-top:14px">Prefer email? <a href="mailto:jobs@podlevskikh.com">jobs@podlevskikh.com</a></p>
-</section>
+  <p class="lead">Free diagnosis within 24 hours: what died, why, a fixed quote and an ETA. No call required.</p>
+  <div class="form-card">
+    <form id="leadform" action="https://formsubmit.co/ajax/jobs@podlevskikh.com" method="POST">
+      <input type="hidden" name="_subject" value="🔥 LEAD: automation request from landing">
+      <input type="hidden" name="_template" value="table">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="row2">
+        <div><label for="f-name">Name</label><input id="f-name" type="text" name="name" placeholder="Jane Smith" required></div>
+        <div><label for="f-email">Work email</label><input id="f-email" type="email" name="email" placeholder="jane@company.com" required></div>
+      </div>
+      <div><label for="f-type">What do you need?</label>
+      <select id="f-type" name="type">
+        <option value="rescue">🚑 Fix a broken automation</option>
+        <option value="build">🔧 Build a new automation / integration</option>
+        <option value="scraping">🕸 Scraping / monitoring pipeline</option>
+        <option value="ai">🧠 AI / LLM workflow</option>
+        <option value="whitelabel">🏢 Agency — white-label partnership</option>
+        <option value="other">Something else</option>
+      </select></div>
+      <div><label for="f-msg">What's broken / what do you need?</label>
+      <textarea id="f-msg" name="message" placeholder="Links, error messages, screenshots-by-link — anything helps. The uglier the better." required></textarea></div>
+      <button type="submit">Get free diagnosis within 24h</button>
+      <p class="note" style="margin:0">No newsletter, no spam — your message lands directly in my inbox.</p>
+    </form>
+  </div>
+  <div class="ok" id="ok">✅ <b>Got it.</b> Your diagnosis lands in your inbox within 24 hours. — Vladimir</div>
+  <p class="note" style="margin-top:16px">Prefer email? <a href="mailto:jobs@podlevskikh.com">jobs@podlevskikh.com</a></p>
+</div></section>
 
-<footer>
-  Vladimir Podlevskikh · Python · Automation · AI Integrations<br>
-  21 Avet Avetisyan St., apt. 19, Yerevan 0033, Armenia · <a href="mailto:jobs@podlevskikh.com">jobs@podlevskikh.com</a> · <a href="https://github.com/namebogsecret">GitHub</a>
-</footer>
+<footer><div class="wrap foot">
+  <div><b style="color:var(--mut)">Vladimir Podlevskikh</b> · Python · Automation · AI Integrations<br>
+  21 Avet Avetisyan St., apt. 19, Yerevan 0033, Armenia</div>
+  <div style="text-align:right"><a href="mailto:jobs@podlevskikh.com">jobs@podlevskikh.com</a> · <a href="https://github.com/namebogsecret" rel="noopener">GitHub</a><br>
+  © 2026 · Yerevan, UTC+4 · full EU overlap, US mornings</div>
+</div></footer>
 
-</div>
 <script>
 document.getElementById('leadform').addEventListener('submit', async function(e){
   e.preventDefault();
@@ -118,8 +298,9 @@ document.getElementById('leadform').addEventListener('submit', async function(e)
   btn.disabled = true; btn.textContent = 'Sending…';
   try{
     const r = await fetch(f.action, {method:'POST', body:new FormData(f), headers:{'Accept':'application/json'}});
-    if(r.ok){ f.style.display='none'; document.getElementById('ok').style.display='block'; }
-    else throw 0;
+    if(!r.ok) throw 0;
+    f.closest('.form-card').style.display='none';
+    document.getElementById('ok').style.display='block';
   }catch(_){
     btn.disabled=false; btn.textContent='Get free diagnosis within 24h';
     alert('Could not send — please email jobs@podlevskikh.com directly.');
