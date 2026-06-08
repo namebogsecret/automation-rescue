@@ -1,0 +1,38 @@
+# ============================================
+# robots.txt — auto.podlevskikh.com
+# Goal: clients from AI answers (ChatGPT / Perplexity / etc.)
+# Last updated: 2026-06-08
+# ============================================
+
+# Block the aggressive offender (ignores robots in practice — declarative; real block = WAF)
+User-agent: Bytespider
+Disallow: /
+
+# Allow the main AI search/retrieval bots explicitly
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Everyone else allowed
+User-agent: *
+Allow: /
+Crawl-delay: 3
+
+Sitemap: https://auto.podlevskikh.com/sitemap.xml
