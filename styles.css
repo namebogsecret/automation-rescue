@@ -43,7 +43,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; scroll-padding-top: 90px; }
 
 body {
   font-family: var(--font-body);
@@ -265,7 +265,7 @@ h1.hero-title em::after {
 .hero-trust .cell:last-child { border-right: 0; padding-right: 0; }
 .hero-trust .num { font-family: var(--font-display); font-size: 27px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); }
 .hero-trust .num .u { color: var(--accent); }
-.hero-trust .lbl { font-size: 12.5px; color: var(--faint); margin-top: 2px; line-height: 1.35; }
+.hero-trust .lbl { font-size: 12.5px; color: var(--muted); margin-top: 2px; line-height: 1.35; }
 
 @media (max-width: 980px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -691,6 +691,11 @@ body.no-motion .status-pill .dot { animation: none; }
   body { font-size: 16px; }
   .wrap { padding: 0 20px; }
   .section { padding: 64px 0; }
+  /* mobile nav is shorter (62px) — match anchor scroll offset */
+  html { scroll-padding-top: 82px; }
+  /* readability floor: keep content captions/labels >= 12px on mobile */
+  .prow.head div, .prow .pp .fx, .repo .gh, .field label,
+  .footer .col h4, .footer .col .col-h { font-size: 12px; }
 
   /* nav */
   .nav-inner { height: 62px; }
@@ -714,7 +719,7 @@ body.no-motion .status-pill .dot { animation: none; }
   .hero-trust { margin-top: 36px; }
   .hero-trust .cell { padding: 16px 14px 16px 0; }
   .hero-trust .num { font-size: 23px; }
-  .hero-trust .lbl { font-size: 11.5px; }
+  .hero-trust .lbl { font-size: 12.5px; }
 
   /* workflow card */
   .flow-card { padding: 14px; }
