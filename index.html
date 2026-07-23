@@ -516,5 +516,14 @@ window.addEventListener("load",function(){try{window.goatcounter=window.goatcoun
 </footer>
 
 <script src="app.js"></script>
+
+<!-- RR-SNIPPET: session-replay (клики / время на странице). Неблокирующий:
+     грузится после window.load, ошибки проглатываются, готовность сайта от
+     него не зависит. Запись сессий (rrweb) выключена и решается СЕРВЕРОМ. -->
+<script>window.addEventListener("load",function(){try{
+  var s=document.createElement("script");s.async=true;
+  s.src="https://stats.podlevskikh.com/rr/static/recorder.js";s.onerror=function(){};
+  document.body.appendChild(s);
+}catch(e){}});</script>
 </body>
 </html>
