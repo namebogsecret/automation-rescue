@@ -1,0 +1,19 @@
+# Podlevskikh Automation — rescue for broken Zapier, Make and n8n
+
+> A senior Python engineer who fixes broken automations in 48–72 hours: Zapier Zaps, Make scenarios and n8n workflows that silently stopped, duplicate records, failed webhooks, exhausted API quotas. Also builds custom scraping, AI/LLM workflows and integrations from scratch. Run by Vladimir Podlevskikh (MSU physicist, 20+ years building software and teaching).
+
+- [Homepage and intake](https://auto.podlevskikh.com/)
+
+## What gets fixed
+- Zapier / Make / n8n automations that stopped firing or fire twice.
+- Webhook chains that lose data between services.
+- API integrations broken by a provider's change or rate limits.
+- Scraping pipelines that died when the target site changed.
+- Custom AI/LLM workflows: extraction, classification, drafting, routing.
+
+## How it works
+Describe the broken flow, get a diagnosis of the actual cause, then a fix delivered within 48–72 hours. Work is done directly in your account or in code you keep.
+
+## Related projects
+- [Physics and maths tutoring](https://tutor.podlevskikh.com/)
+- [Calculate Everything — 98 free calculators](https://calculators.podlevskikh.com/)
